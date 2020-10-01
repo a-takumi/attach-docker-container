@@ -3,12 +3,12 @@ PS3='Please select the target container: '
 
 # Get container names
 CNAMES=(`docker ps --format "{{.Names}}"`)
-# Select interface
+# Show interface for selecting container
 select cname in "${CNAMES[@]}"
 do
   # Get container id
   CID=`docker ps -qf "name=$cname"`
-  # Attach
+  # Start attaching
   docker attach $CID
   break
 done
